@@ -6,13 +6,72 @@ pipeline {
                 sh 'echo Pre-build'
                 sh 'python3 --version'
             }
+            post {
+               success {
+                  echo 'sucess prebuild'
+              }
+              failure {
+                  echo 'Fail pre-build'
+              }
+              always {
+                  echo 'pre-build end'
+               }
+            }
         }
         stage('build') {
             steps {
-                
                 echo 'build in progress'
                 sh 'python3  Webhook/main.py'
             }
+            post {
+               success {
+                  echo 'sucess prebuild'
+              }
+              failure {
+                  echo 'Fail pre-build'
+              }
+              always {
+                  echo 'pre-build end'
+               }
+            }
+            
+        }
+        
+        stage('Running') {
+            steps {
+                echo 'Runny'
+                sh 'python3  Webhook/main.py'
+            }
+            post {
+               success {
+                  echo 'sucess Running'
+              }
+              failure {
+                  echo 'Fail Running'
+              }
+              always {
+                  echo 'Running end'
+               }
+            }
+            
+        }
+        stage('Ending') {
+            steps {
+                echo 'Ending progress'
+                sh 'python3  Webhook/main.py'
+            }
+            post {
+               success {
+                  echo 'sucess Ending'
+              }
+              failure {
+                  echo 'Fail Ending'
+              }
+              always {
+                  echo 'Ending end'
+               }
+            }
+            
         }
     }
 }
