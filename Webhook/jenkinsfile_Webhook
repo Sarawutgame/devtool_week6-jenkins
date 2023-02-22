@@ -91,5 +91,24 @@ pipeline {
             }
             
         }
+        
+        stage('Close') {
+            steps {
+                echo 'Close progress'
+                sh 'python3  Webhook/main.py'
+            }
+            post {
+               success {
+                  echo 'sucess Close'
+              }
+              failure {
+                  echo 'Fail Close'
+              }
+              always {
+                  echo 'Ending Close'
+               }
+            }
+            
+        }
     }
 }
